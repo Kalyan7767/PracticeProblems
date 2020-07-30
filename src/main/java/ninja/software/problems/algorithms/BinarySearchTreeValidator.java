@@ -1,6 +1,7 @@
 package ninja.software.problems.algorithms;
 
 import ninja.software.problems.model.TreeNode;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +25,8 @@ public class BinarySearchTreeValidator {
     }
 
     public boolean isListSorted(List<Integer> list) {
-        if(list == null || list.isEmpty()) {
-            return false;
+        if(CollectionUtils.isEmpty(list)) {
+            return true;
         }
         int prev = list.get(0);
         for(int i = 1; i < list.size(); i++) {
