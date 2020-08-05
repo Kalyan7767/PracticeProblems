@@ -1,58 +1,45 @@
 package ninja.software.problems.algorithms;
 
+import ninja.software.problems.model.Pair;
 import ninja.software.problems.model.TreeNode;
 
 public class MaxSumPathInBinaryTree {
 
     public int maxPathSum(TreeNode A) {
-        Pair result = findMax(A);
+        Pair<Integer, Integer> result = findMax(A);
         if(result == null) {
             return -1;
         }
-        return result.currMax;
+        return result.left;
     }
 
-    public Pair findMax(TreeNode A) {
+    public Pair<Integer, Integer> findMax(TreeNode A) {
         if(A == null) {
             return null;
         }
         if(A.left == null && A.right == null) {
-            return new Pair(A.val, A.val);
+            return new Pair<>(A.val, A.val);
         }
 
-        Pair leftResult = findMax(A.left);
-        Pair rightResult = findMax(A.right);
-        Pair result = new Pair();
+        Pair<Integer, Integer> leftResult = findMax(A.left);
+        Pair<Integer, Integer> rightResult = findMax(A.right);
+        Pair<Integer, Integer> result = new Pair<>();
 
         if(leftResult == null) {
-            result.runningMax = A.val + rightResult.runningMax;
-            result.currMax = Math.max(result.runningMax, rightResult.currMax);
+            result.right = A.val + rightResult.right;
+            result.left = Math.max(result.right, rightResult.left);
         } else if(rightResult == null) {
-            result.runningMax = A.val + leftResult.runningMax;
-            result.currMax = Math.max(result.runningMax, leftResult.currMax);
+            result.right = A.val + leftResult.right;
+            result.left = Math.max(result.right, leftResult.left);
         } else {
-            result.runningMax = Math.max(leftResult.runningMax, rightResult.runningMax) + A.val;
-            result.currMax = Math.max(result.runningMax, leftResult.currMax);
-            result.currMax = Math.max(result.currMax, rightResult.currMax);
-            result.currMax = Math.max(result.currMax, leftResult.runningMax + rightResult.runningMax + A.val);
+            result.right = Math.max(leftResult.right, rightResult.right) + A.val;
+            result.left = Math.max(result.right, leftResult.left);
+            result.left = Math.max(result.left, rightResult.left);
+            result.left = Math.max(result.left, leftResult.right + rightResult.right + A.val);
         }
 
-        result.runningMax = Math.max(A.val, result.runningMax);
-        result.currMax = Math.max(result.currMax,result.runningMax);
+        result.right = Math.max(A.val, result.right);
+        result.left = Math.max(result.left,result.right);
         return result;
     }
-
-    class Pair {
-        int currMax;
-        int runningMax;
-
-        public Pair() {
-        }
-
-        public Pair(int currMax, int runningMax) {
-            this.currMax = currMax;
-            this.runningMax = runningMax;
-        }
-    }
-
 }

@@ -1,2 +1,9 @@
-build/
+./build/*
+./.gradle/*
+./build
+./.gradle
+.gradle/*
+build/*
+build
 .gradle
+

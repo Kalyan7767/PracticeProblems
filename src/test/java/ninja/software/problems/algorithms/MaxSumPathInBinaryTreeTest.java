@@ -1,11 +1,10 @@
 package ninja.software.problems.algorithms;
 
+import ninja.software.problems.model.Pair;
 import ninja.software.problems.model.TreeNode;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Stack;
 
 public class MaxSumPathInBinaryTreeTest {
 
@@ -16,8 +15,8 @@ public class MaxSumPathInBinaryTreeTest {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
-        MaxSumPathInBinaryTree.Pair result = maxSumPathInBinaryTree.findMax(root);
-        Assert.assertThat(result.currMax, CoreMatchers.is(6));
+        Pair<Integer, Integer> result = maxSumPathInBinaryTree.findMax(root);
+        Assert.assertThat(result.left, CoreMatchers.is(6));
     }
 
     @Test
@@ -27,8 +26,8 @@ public class MaxSumPathInBinaryTreeTest {
         root.right = new TreeNode(20);
         root.right.left = new TreeNode(-10);
         root.right.right = new TreeNode(-50);
-        MaxSumPathInBinaryTree.Pair result = maxSumPathInBinaryTree.findMax(root);
-        Assert.assertThat(result.currMax, CoreMatchers.is(40));
+        Pair<Integer, Integer> result = maxSumPathInBinaryTree.findMax(root);
+        Assert.assertThat(result.left, CoreMatchers.is(40));
     }
 
     @Test
@@ -38,8 +37,8 @@ public class MaxSumPathInBinaryTreeTest {
         root.right = new TreeNode(-20);
         root.right.left = new TreeNode(-10);
         root.right.right = new TreeNode(-50);
-        MaxSumPathInBinaryTree.Pair result = maxSumPathInBinaryTree.findMax(root);
-        Assert.assertThat(result.currMax, CoreMatchers.is(-10));
+        Pair<Integer, Integer> result = maxSumPathInBinaryTree.findMax(root);
+        Assert.assertThat(result.left, CoreMatchers.is(-10));
     }
 
     @Test
