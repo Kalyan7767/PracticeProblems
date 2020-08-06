@@ -3,9 +3,9 @@ package ninja.software.problems.algorithms;
 import ninja.software.problems.model.TreeNode;
 import org.junit.Test;
 
-public class BinaryTreeTest {
+public class BinaryTreeInverterTest {
 
-    BinaryTree tree = new BinaryTree();
+    BinaryTreeInverter tree = new BinaryTreeInverter();
 
     @Test
     public void invert() {

@@ -2,7 +2,7 @@ package ninja.software.problems.algorithms;
 
 import ninja.software.problems.model.TreeNode;
 
-public class BinaryTree {
+public class BinaryTreeInverter {
 
     public void invert(TreeNode node) {
         if(node == null) {
